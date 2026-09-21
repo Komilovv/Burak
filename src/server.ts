@@ -1,7 +1,5 @@
-console.log("EXECUTED")
-console.log("heyy")
+import dotenv from "dotenv";
+dotenv.config();
 
-import moment from "moment";
-
-const c_time = moment().format("YYYY MM DD")
-console.log(c_time)
+console.log(process.env.PORT);
+console.log(process.env.MONGO_URL);
