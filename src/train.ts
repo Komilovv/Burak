@@ -1,3 +1,4 @@
+// ================ M-Task =====================
 function getSquares (arr: number[]) {
     let new_arr = [];
     for (let x of arr){
