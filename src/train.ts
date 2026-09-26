@@ -1,27 +1,40 @@
-// ================== N-Task ====================
-function polindromCheck(str: string) {
-    let arr: string[] = str.split("");
-    console.log(arr);
-    let x = 0;
-    let y = arr.length-1;
-    const arr_len = Math.ceil(arr.length/2)
-    while (x<arr_len) {
-        if (arr[x]===arr[y]) {
-            console.log("it is true")
-            x++;
-            y--;
-
-        }
-        else {
-            console.log("it is false")
-            return false;
-            
+// =================== O-Task ====================
+function getSumOfNum (arr: any[]) {
+    let sum = 0;
+    for(const x of arr) {
+        if (typeof(x) === "number") {
+            sum += x;
         }
     }
-    return x===arr_len;
+    return sum;
 }
 
-console.log(polindromCheck("daaddaaad"))
+console.log(getSumOfNum([23, 434, -433, "smth", 976, true, {}, null, 111]))
+
+// ================== N-Task ====================
+// function polindromCheck(str: string) {
+//     let arr: string[] = str.split("");
+//     console.log(arr);
+//     let x = 0;
+//     let y = arr.length-1;
+//     const arr_len = Math.ceil(arr.length/2)
+//     while (x<arr_len) {
+//         if (arr[x]===arr[y]) {
+//             console.log("it is true")
+//             x++;
+//             y--;
+
+//         }
+//         else {
+//             console.log("it is false")
+//             return false;
+            
+//         }
+//     }
+//     return x===arr_len;
+// }
+
+// console.log(polindromCheck("daaddaaad"))
 
 
 
