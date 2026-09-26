@@ -21,7 +21,7 @@ const memberSchema = new Schema({
     },
 
     memberPhone: {
-        type: String,
+        type: String, // why string, why not number???
         index: { unique: true, sparse: true },
         required: true,
     },
@@ -49,7 +49,7 @@ const memberSchema = new Schema({
         default: 0,
     },
   },
-  { timestamps: true }
+  { timestamps: true } // it provides the availablity of createdAt and updatedAt
 );
 
 export default mongoose.model("Member", memberSchema);

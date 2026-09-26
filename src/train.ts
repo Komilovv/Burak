@@ -37,4 +37,12 @@ console.log(polindromCheck("daaddaaad"))
 
 // // console.log(getSquares([2,56,7,1,9]));
 
- 
+ /* Project standards:
+   -- Logging standards
+   -- Naming standards:
+      function, method, varaible => Camel case
+      class => Pascal
+      folder => Kebab
+      CSS => Snake
+   -- Error Handling
+ */
