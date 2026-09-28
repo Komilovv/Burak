@@ -1,15 +1,21 @@
-// =================== O-Task ====================
-function getSumOfNum (arr: any[]) {
-    let sum = 0;
-    for(const x of arr) {
-        if (typeof(x) === "number") {
-            sum += x;
-        }
+// ================== P-Task ===================
+function objToArr (obj: object) {
+    return Object.entries(obj);
     }
-    return sum;
-}
 
-console.log(getSumOfNum([23, 434, -433, "smth", 976, true, {}, null, 111]))
+console.log(objToArr({"x": 4, "y": 7, "z": 88, "The": true}))
+// =================== O-Task ====================
+// function getSumOfNum (arr: any[]) {
+//     let sum = 0;
+//     for(const x of arr) {
+//         if (typeof(x) === "number") {
+//             sum += x;
+//         }
+//     }
+//     return sum;
+// }
+
+// console.log(getSumOfNum([23, 434, -433, "smth", 976, true, {}, null, 111]))
 
 // ================== N-Task ====================
 // function polindromCheck(str: string) {
