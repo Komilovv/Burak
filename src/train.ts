@@ -1,9 +1,22 @@
-// ================== P-Task ===================
-function objToArr (obj: object) {
-    return Object.entries(obj);
-    }
+// =================== Q-Task ==================
+function hasProperty (obj: object, str: string) {
+  const keys = Object.keys(obj);
+  return keys.includes(str);
+}
+const obj = {
+  name: "Hoji",
+  age: 13,
+  job: "pupil",
+}
+const str = "job";
+console.log(hasProperty(obj, str));
 
-console.log(objToArr({"x": 4, "y": 7, "z": 88, "The": true}))
+// ================== P-Task ===================
+// function objToArr (obj: object) {
+//     return Object.entries(obj);
+//     }
+
+// console.log(objToArr({"x": 4, "y": 7, "z": 88, "The": true}))
 // =================== O-Task ====================
 // function getSumOfNum (arr: any[]) {
 //     let sum = 0;
