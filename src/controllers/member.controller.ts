@@ -1,7 +1,7 @@
 import {T} from "../libs/types/common";
 import {Request, Response} from "express";
 import { LoginInput, MemberInput } from "../libs/types/member";
-import { MemberType } from "../libs/enums/member.enum";
+import { MemberType } from "../libs/enums/member.enum"; // maybe no need for that line
 import MemberService from "../models/Member.service";
 import Errors from "../libs/Errors";
 
