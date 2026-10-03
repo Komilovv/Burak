@@ -9,16 +9,16 @@ import Errors from "../libs/Errors";
 const memberService = new MemberService();
 
 const memberController: T = {};
-
+// define => parametr
 memberController.signup = async (req: Request, res: Response) => {
     try {
-        //TODO: oken
+        //TODO: oken  
         console.log("signup");
 
         const input: MemberInput = req.body,
           result = await memberService.signup(input);
 
-        res.json(result);
+        res.json(result);  
     }
     catch (err) {
         console.log("Error, signup:", err);

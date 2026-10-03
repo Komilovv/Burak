@@ -43,7 +43,7 @@ class MemberService {
         if (!isMatch) {
             throw new Errors(HttpCode.UNAUTHORIZED, Message.WRONG_PASSWORD)
         }
-
+        console
         return await this.memberModel.findById(member._id).lean().exec()
 
     }
@@ -74,8 +74,8 @@ class MemberService {
     public async processLogin(input: LoginInput): Promise<Member> {
         const member = await this.memberModel
             .findOne(
-                {memberNick: input.memberNick},
-                {memberNick: 1, memberPassword: 1}
+                {memberNick: input.memberNick}, // Filter (the query) => find a member whose memberNick field equals the value in input.memberNick
+                {memberNick: 1, memberPassword: 1} // Projection (field selection) => instead of 1, enter any truthy value
             )
             .exec();
         

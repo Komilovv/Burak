@@ -9,7 +9,10 @@ routerAdmin.get("/login", restaurantController.getLogin) // API
 
 routerAdmin.get("/signup", restaurantController.getSignup) // API
            .post("/signup", restaurantController.processSignup); // API
+routerAdmin.get("/logout", restaurantController.logout)
+
+routerAdmin.get("/check-me", restaurantController.checkAuthSession);
 
 // Product
 // User
-export default routerAdmin;
+export default routerAdmin; 
