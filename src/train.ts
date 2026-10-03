@@ -1,15 +1,29 @@
+
+// ====================R-Task ==================
+function calc(str: string) {
+  let num = 0;
+  for (const x of str) {
+    if(x!=="-" && x!=="+"){
+      console.log(x)
+      num += Number(x);
+    }
+  }
+  return num
+}
+console.log(calc("2+2-1"))
+
 // =================== Q-Task ==================
-function hasProperty (obj: object, str: string) {
-  const keys = Object.keys(obj);
-  return keys.includes(str);
-}
-const obj = {
-  name: "Hoji",
-  age: 13,
-  job: "pupil",
-}
-const str = "job";
-console.log(hasProperty(obj, str));
+// function hasProperty (obj: object, str: string) {
+//   const keys = Object.keys(obj);
+//   return keys.includes(str);
+// }
+// const obj = {
+//   name: "Hoji",
+//   age: 13,
+//   job: "pupil",
+// }
+// const str = "job";
+// console.log(hasProperty(obj, str));
 
 // ================== P-Task ===================
 // function objToArr (obj: object) {
