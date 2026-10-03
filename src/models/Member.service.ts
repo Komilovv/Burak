@@ -1,6 +1,8 @@
+import { NextFunction } from "express";
+import restaurantController from "../controllers/restaurant.controller";
 import { MemberType } from "../libs/enums/member.enum";
 import Errors, { HttpCode, Message } from "../libs/Errors";
-import { LoginInput, Member, MemberInput } from "../libs/types/member";
+import { AdminRequest, LoginInput, Member, MemberInput } from "../libs/types/member";
 import MemberModel from "../schema/Member.model";
 import * as bcrypt from "bcryptjs"; // this package is for protecting clients' info
 
@@ -91,6 +93,6 @@ class MemberService {
         return await this.memberModel.findById(member._id).exec()
 
     }
-}
+};
 
 export default MemberService;
