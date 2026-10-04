@@ -9,7 +9,7 @@ const memberSchema = new Schema({
     },
 
     memberStatus: {
-        type: String,
+        type: String, 
         enum: MemberStatus,
         default: MemberStatus.ACTIVE,
     },
