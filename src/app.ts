@@ -5,7 +5,7 @@ import routerAdmin from "./router-admin";
 import morgan from "morgan";
 import { MORGAN_FORMAT } from "./libs/config";
 
-import session from "express-session";
+import session from "express-session"; // the session() creates session
 import ConnectMongoDB from "connect-mongodb-session";
 import { T } from "./libs/types/common";
 

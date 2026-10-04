@@ -1,16 +1,34 @@
-
-// ====================R-Task ==================
-function calc(str: string) {
-  let num = 0;
-  for (const x of str) {
-    if(x!=="-" && x!=="+"){
-      console.log(x)
-      num += Number(x);
+// ====================== S-Task ================
+function getMissNum(arr: number[]) {
+  let arr_sort = arr.sort()
+  console.log(arr_sort);
+  let x = 0;
+  let ind = 1
+  let value1 = (arr_sort[0] + 1);
+  while(x<arr.length){
+    if ( value1 !== arr_sort[ind]) {
+      return value1;
+    } else {
+      console.log("========")
+      x++;
+      ind++;
+      value1++;
     }
   }
-  return num
 }
-console.log(calc("2+2-1"))
+console.log(getMissNum([3,4,6,2,5,9,7,1])); 
+// ====================R-Task ==================
+// function calc(str: string) {
+//   let num = 0;
+//   for (const x of str) {
+//     if(x!=="-" && x!=="+"){
+//       console.log(x)
+//       num += Number(x);
+//     }
+//   }
+//   return num
+// }
+// console.log(calc("2+2-1"))
 
 // =================== Q-Task ==================
 // function hasProperty (obj: object, str: string) {

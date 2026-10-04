@@ -72,7 +72,7 @@ class MemberService {
             throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
         }
     }
-
+// define
     public async processLogin(input: LoginInput): Promise<Member> {
         const member = await this.memberModel
             .findOne(
@@ -83,7 +83,7 @@ class MemberService {
         
         if (!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMBER_NICK)
 
-        const isMatch = await bcrypt.compare(input.memberPassword, member.memberPassword);
+        const isMatch = await bcrypt.compare(input.memberPassword, member.memberPassword); // call
         // const isMatch = input.memberPassword === member.memberPassword;
         console.log("isMatch;", isMatch);
         if (!isMatch) {
