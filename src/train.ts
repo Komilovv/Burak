@@ -1,3 +1,8 @@
+// ===================== T-Task =================
+function mergeSortArrs (arr1: number[], arr2: number[]) {
+  return arr1.concat(arr2).sort((a, b) => a-b );
+}
+ console.log(mergeSortArrs([5,9,1,25,34], [4,7,-3]))
 // ====================== S-Task ================
 // function getMissNum(arr: number[]) {
 //   let arr_sort = arr.sort()
