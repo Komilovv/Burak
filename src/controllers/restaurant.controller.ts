@@ -3,7 +3,7 @@ import {NextFunction, Request, Response} from "express";
 import MemberService from "../models/Member.service";
 import { AdminRequest, LoginInput, MemberInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum";
-import Errors, { Message } from "../libs/Errors";
+import Errors, { HttpCode, Message } from "../libs/Errors";
 
 
 const restaurantController: T = {};
@@ -39,8 +39,8 @@ restaurantController.processLogin = async (req: AdminRequest, res: Response) => 
         const result = await memberService.processLogin(input);
         // session
         req.session.member = result;
-        req.session.save(function() {
-            res.send(result);
+        req.session.save(function() {// agar buni yozmasak async save qilishdan oldin res bervorsa, keyingi reqlarning sessionlari db dagiga mos lemasligi mumkin va crash
+            res.redirect("/admin/products/all");
         })  
     }
     catch (err) {
@@ -64,15 +64,19 @@ restaurantController.getSignup = (req: Request, res: Response) => {
 restaurantController.processSignup = async (req: AdminRequest, res: Response) => {
     try {
         console.log("processSignup");
+        const file = req.file;
+        if(!file)
+            throw new Errors(HttpCode.BAD_REQUEST, Message.SOMETHING_WENT_WRONG);
 
         const newMember: MemberInput = req.body;
+        newMember.memberImage = file?.path.replace(/\\/g, "/");
         newMember.memberType = MemberType.RESTAURANT;
 
         const result = await memberService.processSignup(newMember);
         // session
         req.session.member = result;
         req.session.save(function() {
-            res.send(result);
+            res.redirect("/admin/products/all");
         })
         
     }

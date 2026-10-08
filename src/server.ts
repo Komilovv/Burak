@@ -2,6 +2,8 @@ import dotenv from "dotenv";
 dotenv.config();
 import app from "./app";
 import mongoose from "mongoose";
+
+//TCP connection
 mongoose.connect(process.env.MONGO_URL as string, {})
 .then((data)=>{
     console.log(typeof(data)); // returns object

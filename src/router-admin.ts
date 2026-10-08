@@ -20,14 +20,14 @@ routerAdmin.get("/check-me", restaurantController.checkAuthSession);
 
 // Product
 routerAdmin.get("/product/all",
-    restaurantController.verifyRestaurant,
+    restaurantController.verifyRestaurant, // Authorization
     productController.getAllProducts);
 routerAdmin.post("/product/create",
-    restaurantController.verifyRestaurant,
+    restaurantController.verifyRestaurant, // Authorization
     makeUploader("products").array("productImages",6),
     productController.createNewProduct);
 routerAdmin.post("/product/:id",
-    restaurantController.verifyRestaurant,
+    restaurantController.verifyRestaurant, // Authorization
     productController.updateChosenProduct);
 
 // User
