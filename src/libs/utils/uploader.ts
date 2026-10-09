@@ -1,9 +1,9 @@
 import path from "path";
-import multer from "multer";
+import multer from "multer"; // image uploader package
 import {v4} from "uuid";
 
 /** MULTER IMAGE UPLOADER **/
-
+ // define
 function getTargetImageStorage(address: any) {
     return multer.diskStorage({
         destination: function (req, file, cb) {
@@ -17,12 +17,13 @@ function getTargetImageStorage(address: any) {
     });
 }
 
+// uploader function
 const makeUploader = (address: string) => {
     const storage = getTargetImageStorage(address);
     return multer({ storage: storage });
 };
 
-export default makeUploader;
+export default makeUploader; 
 
 // const product_storage = multer.diskStorage({
 //     destination: function (req, file, cb) {

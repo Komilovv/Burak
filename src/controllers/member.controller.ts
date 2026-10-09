@@ -7,7 +7,7 @@ import Errors from "../libs/Errors";
 
 // React
 const memberService = new MemberService();
-
+ 
 const memberController: T = {};
 // define => parametr
 memberController.signup = async (req: Request, res: Response) => {

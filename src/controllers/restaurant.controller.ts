@@ -54,7 +54,7 @@ restaurantController.getSignup = (req: Request, res: Response) => {
     try {
         console.log("getSignup")
         res.render("signup");
-    }
+    }  
     catch (err) {
         console.log("Error, getSignup:", err);
         res.redirect("/admin");
@@ -115,7 +115,7 @@ restaurantController.checkAuthSession = async (req: AdminRequest, res: Response)
 
 restaurantController.verifyRestaurant = (req: AdminRequest, res: Response, next: NextFunction) => {
     if (req.session?.member?.memberType === MemberType.RESTAURANT) {
-        req.member = req.session.member;
+        req.member = req.session.member; // why we need this code??
         next();
     } else {
         const message = Message.NOT_AUTHENTICATED;

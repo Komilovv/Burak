@@ -24,11 +24,17 @@ routerAdmin.get("/product/all",
     productController.getAllProducts);
 routerAdmin.post("/product/create",
     restaurantController.verifyRestaurant, // Authorization
-    makeUploader("products").array("productImages",6),
+    makeUploader("products").array("productImages",6), // "productImages" is the field name of the file input in the form.
     productController.createNewProduct);
 routerAdmin.post("/product/:id",
     restaurantController.verifyRestaurant, // Authorization
     productController.updateChosenProduct);
+    
+/** Multer takes the files sent under the field name "productImages" 
+and saves them into the products folder 
+helper sets it up that way).
+It then puts each file’s info (filename, path, size, mimetype,
+originalname, etc.) into req.files, so your controller can read it. */
 
 // User
 export default routerAdmin; 

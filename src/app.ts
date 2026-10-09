@@ -21,6 +21,7 @@ app.use(express.static(path.join(__dirname, "public"))); // Middleware DP -> pub
 app.use(express.urlencoded({extended: true})); // Middleware DP -> Traditional API support (BSSR nimi?)
 app.use(express.json()); // Middleware DP -> Rest API support (SPA nimi?)
 app.use(morgan(MORGAN_FORMAT));
+
 // Sessions or Token => authentication or authorization
 app.use(
     session({

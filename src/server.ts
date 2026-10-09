@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 //TCP connection
 mongoose.connect(process.env.MONGO_URL as string, {})
 .then((data)=>{
-    console.log(typeof(data)); // returns object
+    //console.log(typeof(data)); // returns object
     console.log("Successfully connected to MongoDB");
     const PORT = process.env.PORT ?? 3003;
     app.listen(PORT, function() {
