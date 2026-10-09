@@ -50,7 +50,7 @@ productController.createNewProduct = async (req: AdminRequest, res: Response) =>
         res.send(`<script> alert("${message}"); window.location.replace("/admin/product/all") </script>`);
     }
 }
-
+// define
 productController.updateChosenProduct = async (req: Request, res: Response) => {
     try {
         console.log("updateChosenProduct");
