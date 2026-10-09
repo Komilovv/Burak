@@ -32,7 +32,7 @@ productController.createNewProduct = async (req: AdminRequest, res: Response) =>
     try {
         console.log("createNewProduct");
 
-        if(!req.file)
+        if(!req.files?.length)
             throw new Errors(HttpCode.BAD_REQUEST, Message.NO_DATA_FOUND);
 
         const data: ProductInput = req.body;
