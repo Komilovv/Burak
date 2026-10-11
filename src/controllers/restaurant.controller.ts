@@ -40,7 +40,7 @@ restaurantController.processLogin = async (req: AdminRequest, res: Response) => 
         // session
         req.session.member = result;
         req.session.save(function() {// agar buni yozmasak async save qilishdan oldin res bervorsa, keyingi reqlarning sessionlari db dagiga mos lemasligi mumkin va crash
-            res.redirect("/admin/products/all");
+            res.redirect("/admin/product/all");
         })  
     }
     catch (err) {
@@ -71,12 +71,13 @@ restaurantController.processSignup = async (req: AdminRequest, res: Response) =>
         const newMember: MemberInput = req.body;
         newMember.memberImage = file?.path.replace(/\\/g, "/");
         newMember.memberType = MemberType.RESTAURANT;
-
+       
         const result = await memberService.processSignup(newMember);
+        
         // session
         req.session.member = result;
         req.session.save(function() {
-            res.redirect("/admin/products/all");
+            res.redirect("/admin/product/all");
         })
         
     }
@@ -129,7 +130,7 @@ restaurantController.getUsers = async (req: Request, res: Response) => {
     try {
         console.log("getUsers")
         const result = await memberService.getUsers();
-
+        console.log("result:", result);
         res.render("users", {users: result});
         
     }

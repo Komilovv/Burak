@@ -11,7 +11,7 @@ export interface Member {
     memberPhone: string;
     memberPassword?: string;
     memberAddress?: string;
-    memberDesc?: string;
+    memberDesc?: string;  
     memberImage?: string;
     memberPoints: number;
     createdAt: Date;
