@@ -1,6 +1,21 @@
+// =================== V-Task ====================
+function countChars(str: string) {
+  let obj: { [key: string]: number } = {};
+  for (const x of str) {
+    if ( x in obj) {
+      obj[x]++;
+    } else {
+      obj[x] = 1;
+    }
+  }
+  return obj;
+}
+
+console.log(countChars("bulbulatirguloshiq"))
+
 // ==================== U-Task ==================
-const sumOdds = (num: number) => num%2 ? num/2-0.5 : num/2
-console.log(sumOdds(45923))
+// const sumOdds = (num: number) => num%2 ? num/2-0.5 : num/2
+// console.log(sumOdds(45923))
 // ===================== T-Task =================
 // function mergeSortArrs (arr1: number[], arr2: number[]) {
 //   return arr1.concat(arr2).sort((a, b) => a-b );
