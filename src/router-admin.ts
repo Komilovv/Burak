@@ -8,7 +8,7 @@ const routerAdmin = express.Router();
 // Restaurant
 routerAdmin.get("/", restaurantController.goHome); // API
 routerAdmin.get("/login", restaurantController.getLogin) // API
-routerAdmin.post("/login", restaurantController.processLogin); // API
+           .post("/login", restaurantController.processLogin); // API
 
 routerAdmin.get("/signup", restaurantController.getSignup) // API
            .post("/signup",
