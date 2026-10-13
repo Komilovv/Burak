@@ -7,4 +7,4 @@ router.post("/signup", memberController.signup); // API
 
 router.post("/login", memberController.login); // API
 
-export default router;   
+export default router;     

@@ -6,7 +6,7 @@ import MemberService from "../models/Member.service";
 import Errors from "../libs/Errors";
 
 // React
-const memberService = new MemberService();
+const memberService = new MemberService();  
    
 const memberController: T = {};
 // define => parametr
