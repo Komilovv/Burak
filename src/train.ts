@@ -11,7 +11,7 @@ function countChars(str: string) {
   return obj;
 }
 
-console.log(countChars("bulbulatirguloshiq"))
+console.log(countChars("sdfsdfgtutyuytue"))
 
 // ==================== U-Task ==================
 // const sumOdds = (num: number) => num%2 ? num/2-0.5 : num/2
