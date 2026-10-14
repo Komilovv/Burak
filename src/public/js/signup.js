@@ -1,4 +1,4 @@
-const ConnectMongoDBSession = require("connect-mongodb-session");
+// const ConnectMongoDBSession = require("connect-mongodb-session");
 
 console.log("Signup frontend javascript file");
 
@@ -55,4 +55,4 @@ function validateSignupForm() {
         alert("Please insert restaurant image");
         return false;
     }
-}
+} 
