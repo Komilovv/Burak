@@ -9,6 +9,8 @@ import Errors, { HttpCode, Message } from "../libs/Errors";
 const restaurantController: T = {};
 const memberService = new MemberService();
 
+// Restaurant
+
 restaurantController.goHome = (req: Request, res: Response) => {
     try {
         console.log("goHome")
@@ -19,7 +21,7 @@ restaurantController.goHome = (req: Request, res: Response) => {
         console.log("Error, goHome:", err);  
         res.redirect("/admin");
     }
-}
+}  
 
 restaurantController.getLogin = (req: Request, res: Response) => {
     try {
@@ -69,6 +71,7 @@ restaurantController.processSignup = async (req: AdminRequest, res: Response) =>
             throw new Errors(HttpCode.BAD_REQUEST, Message.SOMETHING_WENT_WRONG);
 
         const newMember: MemberInput = req.body;
+        console.log("New Member:", req.body);
         newMember.memberImage = file?.path.replace(/\\/g, "/");
         newMember.memberType = MemberType.RESTAURANT;
        
@@ -160,4 +163,4 @@ restaurantController.updateChosenUser = async (req: Request, res: Response) => {
     }
 }
 
-export default restaurantController;
+export default restaurantController;  

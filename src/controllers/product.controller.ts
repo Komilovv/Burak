@@ -10,7 +10,7 @@ const productService = new ProductService();
 const productController: T = {};
 
 /**SPA */
-
+  
 /**SSR */
 
 productController.getAllProducts = async (req: Request, res: Response) => {

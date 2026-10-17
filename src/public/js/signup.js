@@ -5,7 +5,7 @@ console.log("Signup frontend javascript file");
 $(function () {
     const fileTarget = $(".file-box .upload-hidden");
     let filename;
-
+  
     fileTarget.on("change", function() {
         if(window.FileReader) {
             const uploadFile = $(this)[0].files[0];
@@ -48,7 +48,7 @@ function validateSignupForm() {
         return false;
     }
 
-    const memberImage = $(".member-image").get(0).files[0].name
+    const memberImage = $(".member-image")?.get(0)?.files[0]?.name
       ? $(".member-image").get(0).files[0].name
       : null;
     if(!memberImage) {

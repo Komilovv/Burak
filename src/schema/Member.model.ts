@@ -21,7 +21,11 @@ const memberSchema = new Schema({
     },
 
     memberPhone: {
-        type: String, // why string, why not number???
+        type: String, /* why string, why not number? =>
+        because phone numbers can have leading zeros, 
+        plus signs, and other formatting characters that 
+        are not numeric. Storing them as strings preserves the
+        original format and avoids issues with number representation.*/
         index: { unique: true, sparse: true },
         required: true,
     },

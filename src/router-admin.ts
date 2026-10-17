@@ -3,7 +3,7 @@ import restaurantController from "./controllers/restaurant.controller";
 import productController from "./controllers/product.controller";
 import makeUploader from "./libs/utils/uploader";
 
-const routerAdmin = express.Router();
+const routerAdmin = express.Router(); 
 
 // Restaurant
 routerAdmin.get("/", restaurantController.goHome); // API
@@ -13,12 +13,12 @@ routerAdmin.get("/login", restaurantController.getLogin) // API
 routerAdmin.get("/signup", restaurantController.getSignup) // API
            .post("/signup",
             makeUploader("members").single("memberImage"),
-            restaurantController.processSignup); // API
+            restaurantController.processSignup); // API 
 routerAdmin.get("/logout", restaurantController.logout)
 
 routerAdmin.get("/check-me", restaurantController.checkAuthSession);
 
-// Product
+// Product 
 routerAdmin.get("/product/all",
     restaurantController.verifyRestaurant, // Authorization
     productController.getAllProducts);

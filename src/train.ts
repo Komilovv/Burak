@@ -1,17 +1,30 @@
-// =================== V-Task ====================
-function countChars(str: string) {
-  let obj: { [key: string]: number } = {};
-  for (const x of str) {
-    if ( x in obj) {
-      obj[x]++;
-    } else {
-      obj[x] = 1;
-    }
+// =================== W-Task ====================
+function chunkArray (arr: number[], num: number) {
+  let x = arr.length/num;
+  let arr1 = [];
+  while (x>0) {
+    arr1.push(arr.splice(0, num));
+    x--;
   }
-  return obj;
+  return arr1;
 }
 
-console.log(countChars("sdfsdfgtutyuytue"))
+console.log(chunkArray([11,2,343,4,75,6,7,-8,49,10], 4))
+
+// =================== V-Task ====================
+// function countChars(str: string) {
+//   let obj: { [key: string]: number } = {};
+//   for (const x of str) {
+//     if ( x in obj) {
+//       obj[x]++;
+//     } else {
+//       obj[x] = 1;
+//     }
+//   }
+//   return obj;
+// }
+
+// console.log(countChars("sdfsdfgtutyuytue"))
 
 // ==================== U-Task ==================
 // const sumOdds = (num: number) => num%2 ? num/2-0.5 : num/2

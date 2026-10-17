@@ -1,4 +1,4 @@
-import express from "express";
+import express from "express"; // Express is a framework for Node.js to create web applications
 import path from "path";
 import router from "./router";  // Hozircha bu file package ishlatilmaydi
 import routerAdmin from "./router-admin";
@@ -19,7 +19,7 @@ const store = new MongoDBStore({
 const app = express();
 app.use(express.static(path.join(__dirname, "public"))); // Middleware DP -> public ni ochiq qilib qo'yyapti
 app.use(express.urlencoded({extended: true})); // Middleware DP -> Traditional API support (BSSR nimi?)
-app.use(express.json()); // Middleware DP -> Rest API support (SPA nimi?)
+app.use(express.json()); // Middleware DP -> Rest API support 
 app.use(morgan(MORGAN_FORMAT));
 
 // Sessions or Token => authentication or authorization
