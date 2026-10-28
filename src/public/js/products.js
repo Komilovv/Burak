@@ -10,7 +10,7 @@ $(document).ready(function () {
             $("#product-volume").hide();
             $("#product-collection").show();
         }
-    });
+    }); 
 
     $("#process-btn").on("click", () => {
         $(".dish-container").slideToggle(500);

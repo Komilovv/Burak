@@ -16,11 +16,12 @@ export enum Message {
   UPDATE_FAILED = "Update is failed!",
 
   USED_NICK_PHONE = "U r inserting used nick or phone",
+  TOKEN_CREATION_FAILED = "Token creation error!",
   BLOCKED_USER = "This user is blocked, pls contact admin",
   NO_MEMBER_NICK = "No member with that member nick",
   WRONG_PASSWORD = "Wrong password!",
-  NOT_AUTHENTICATED = "You are not authenticated, pls login first."
-}
+  NOT_AUTHENTICATED = "You are not authenticated, pls login first.",
+ }
 
 class Errors extends Error {
   public code: HttpCode;

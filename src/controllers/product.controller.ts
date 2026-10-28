@@ -6,7 +6,7 @@ import { AdminRequest } from "../libs/types/member";
 import { ProductInput } from "../libs/types/product";
 
 const productService = new ProductService();
-
+  
 const productController: T = {};
 
 /**SPA */
@@ -18,7 +18,7 @@ productController.getAllProducts = async (req: Request, res: Response) => {
         console.log("getAllProducts");
         const data = await productService.getAllProducts();
 
-        res.render("products", {products: data})
+        res.render("products", {products: data});
         
     }
     catch (err) {

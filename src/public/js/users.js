@@ -22,4 +22,4 @@ $(function () {
         alert("User update failed. Please try again.");
       });
     });
-});
+});  

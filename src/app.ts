@@ -3,6 +3,7 @@ import path from "path";
 import router from "./router";  // Hozircha bu file package ishlatilmaydi
 import routerAdmin from "./router-admin";
 import morgan from "morgan";
+import cookieParser from "cookie-parser";
 import { MORGAN_FORMAT } from "./libs/config";
 
 import session from "express-session"; // the session() creates session
@@ -16,10 +17,11 @@ const store = new MongoDBStore({
 }); // the obj connects mongoDB and create a collection named sessions 
 
 // Entrance
-const app = express();
+const app = express();  
 app.use(express.static(path.join(__dirname, "public"))); // Middleware DP -> public ni ochiq qilib qo'yyapti
 app.use(express.urlencoded({extended: true})); // Middleware DP -> Traditional API support (BSSR nimi?)
 app.use(express.json()); // Middleware DP -> Rest API support 
+app.use(cookieParser());
 app.use(morgan(MORGAN_FORMAT));
 
 // Sessions or Token => authentication or authorization

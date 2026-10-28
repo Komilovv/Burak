@@ -150,7 +150,7 @@ restaurantController.updateChosenUser = async (req: Request, res: Response) => {
         console.log("updateChosenUser");
         const result = await memberService.updateChosenUser(req.body);
 
-        res.status(HttpCode.OK).json({data: result})
+        res.status(HttpCode.OK).json({data: result});
     }
     catch (err) {
         console.log("Error, updateChosenUser:", err);

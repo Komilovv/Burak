@@ -18,8 +18,8 @@ routerAdmin.get("/logout", restaurantController.logout)
 
 routerAdmin.get("/check-me", restaurantController.checkAuthSession);
 
-// Product 
-routerAdmin.get("/product/all",
+// Product   
+routerAdmin.get("/product/all", // API
     restaurantController.verifyRestaurant, // Authorization
     productController.getAllProducts);
 routerAdmin.post("/product/create",

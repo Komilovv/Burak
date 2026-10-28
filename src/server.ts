@@ -17,3 +17,4 @@ mongoose.connect(process.env.MONGO_URL as string, {})
 .catch((err)=>{
     console.log(`Error on connection ${err}`)
 });
+  
