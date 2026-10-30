@@ -19,6 +19,7 @@ const store = new MongoDBStore({
 // Entrance
 const app = express();  
 app.use(express.static(path.join(__dirname, "public"))); // Middleware DP -> public ni ochiq qilib qo'yyapti
+app.use("/uploads", express.static("./uploads"))
 app.use(express.urlencoded({extended: true})); // Middleware DP -> Traditional API support (BSSR nimi?)
 app.use(express.json()); // Middleware DP -> Rest API support 
 app.use(cookieParser());

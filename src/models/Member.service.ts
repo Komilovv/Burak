@@ -6,6 +6,7 @@ import { AdminRequest, LoginInput, Member, MemberInput, MemberUpdateInput } from
 import MemberModel from "../schema/Member.model";
 import * as bcrypt from "bcryptjs"; // this package is for protecting clients' info
 import { shapeIntoMongooseObjectId } from "../libs/config";
+import { relativeTimeThreshold } from "moment";
 
 class MemberService {
     private readonly memberModel;
@@ -67,6 +68,31 @@ class MemberService {
         if(!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
 
         return result;
+    }
+
+    public async updateMember(
+        member: Member,
+        input: MemberUpdateInput
+    ): Promise<Member> {
+        const memberId = shapeIntoMongooseObjectId(member._id);
+        const result = await this.memberModel
+            .findOneAndUpdate({_id: memberId}, input, { new: true })
+            .exec();
+        if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.UPDATE_FAILED);
+
+        return result; 
+    }
+
+    public async getTopUsers (): Promise<Member[]> {
+        const result = await this.memberModel.find({
+            memberStatus: MemberStatus.ACTIVE,
+            memberPoints: {$gte: 1},
+        })
+        .sort({ memberPoints: -1 })
+        .limit(4).exec();
+        if(!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+
+        return []
     }
 
     /** SSR */

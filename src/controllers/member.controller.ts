@@ -1,6 +1,6 @@
 import {T} from "../libs/types/common";
 import {NextFunction, Request, Response} from "express";
-import { ExtendedRequest, LoginInput, MemberInput } from "../libs/types/member";
+import { ExtendedRequest, LoginInput, MemberInput, MemberUpdateInput } from "../libs/types/member";
 import { MemberType } from "../libs/enums/member.enum"; // maybe no need for that line
 import MemberService from "../models/Member.service";
 import Errors, { HttpCode, Message } from "../libs/Errors";
@@ -54,7 +54,7 @@ memberController.login = async (req: Request, res: Response) => {
 memberController.logout = (req: ExtendedRequest, res: Response) => {
     try {
         console.log("Logout");
-        res.cookie("accesToken", null, {maxAge: 0, httpOnly: true});
+        res.clearCookie("accesToken", { httpOnly: true, path: "/"});
         res.status(HttpCode.OK).json(Errors.standard);
     } catch (err) {
         console.log("Error, logout:", err);
@@ -75,6 +75,37 @@ memberController.getMemberDetail =async (req: ExtendedRequest, res: Response) =>
         else res.status(Errors.standard.code).json(Errors.standard);
     }
 }
+
+memberController.updateMember = async(req: ExtendedRequest, res: Response) => {
+    try {
+        console.log("updateMember");
+        const input: MemberUpdateInput = req.body;
+        if (req.file) input.memberImage = req.file.path.replace(/\\/, "/");
+        const result = await memberService.updateMember(req.member, input);
+
+        res.status(HttpCode.OK).json(result);
+
+    } catch (err) {
+        console.log("Error,updateMember:", err);
+        if (err instanceof Errors) res.status(err.code).json(err);
+        else res.status(Errors.standard.code).json(Errors.standard);
+    }
+}
+
+memberController.getTopUsers = async (req: Request, res: Response ) => {
+    try {
+        console.log("getTopUsers");
+        
+        const result = await memberService.getTopUsers();
+
+        res.status(HttpCode.OK).json(result)
+
+    } catch (err) {
+        console.log("Error, getTopUsers:", err);
+        if (err instanceof Errors) res.status(err.code).json(err);
+        else res.status(Errors.standard.code).json(Errors.standard);
+    }
+} 
 
 memberController.verifyAuth = async ( 
     req: ExtendedRequest, 
