@@ -54,8 +54,10 @@ memberController.login = async (req: Request, res: Response) => {
 memberController.logout = (req: ExtendedRequest, res: Response) => {
     try {
         console.log("Logout");
-        res.clearCookie("accesToken", { httpOnly: true, path: "/"});
-        res.status(HttpCode.OK).json(Errors.standard);
+        res.clearCookie("accessToken", { httpOnly: true, path: "/"});
+        console.log("1")
+        res.status(HttpCode.OK).json({Logout: true});
+        console.log("2")
     } catch (err) {
         console.log("Error, logout:", err);
         if (err instanceof Errors) res.status(err.code).json(err);
@@ -115,9 +117,9 @@ memberController.verifyAuth = async (
     try{
         const token = req.cookies["accessToken"];
         if(token) req.member = await authService.checkAuth(token);
-
+     
         if(!req.member) throw new Errors(HttpCode.UNAUTHORIZED, Message.NOT_AUTHENTICATED);
-        
+
         next();
     } catch (err) {
         console.log("Error,verifyAuth:", err);
