@@ -7,6 +7,7 @@ import MemberModel from "../schema/Member.model";
 import * as bcrypt from "bcryptjs"; // this package is for protecting clients' info
 import { shapeIntoMongooseObjectId } from "../libs/config";
 import { relativeTimeThreshold } from "moment";
+import { findPackageJSON } from "module";
 
 class MemberService {
     private readonly memberModel;
@@ -16,6 +17,16 @@ class MemberService {
     }
 
     /* SPA */ 
+
+    public async getRestaurant(): Promise<Member> {
+        const result = this.memberModel
+            .findOne({ memberType: MemberType.RESTAURANT})
+            .exec();
+
+        if(!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+        
+        return result;
+    }
 
     public async signup(input: MemberInput): Promise<Member> {
         const salt = await bcrypt.genSalt();
@@ -91,7 +102,7 @@ class MemberService {
         .sort({ memberPoints: -1 })
         .limit(4).exec();
         if(!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
-
+  
         return []
     }
 

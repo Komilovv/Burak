@@ -4,6 +4,7 @@ import uploader from "./libs/utils/uploader";
 const router = express.Router();
 
 // Member 
+router.get("/member/restaurant", memberController.getRestaurant);
 router.post("/member/signup", memberController.signup); // API
 router.post("/member/login", memberController.login); // API
 router.post("/member/logout",
