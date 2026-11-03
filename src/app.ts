@@ -1,6 +1,6 @@
 import express from "express"; // Express is a framework for Node.js to create web applications
 import path from "path";
-import router from "./router";  // Hozircha bu file package ishlatilmaydi
+import router from "./router";  
 import routerAdmin from "./router-admin";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";

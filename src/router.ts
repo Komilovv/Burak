@@ -1,6 +1,7 @@
 import express from "express";
 import memberController from "./controllers/member.controller";
 import uploader from "./libs/utils/uploader";
+import productController from "./controllers/product.controller";
 const router = express.Router();
 
 // Member 
@@ -22,9 +23,11 @@ router.post(
     uploader("members").single("memberImage"),
     memberController.updateMember
 );
-router.get("/member/top-users", memberController.getTopUsers)
+router.get("/member/top-users", memberController.getTopUsers);
 
 // Product
+router.get("/product/all", productController.getProducts);
+
 
 // Order
 export default router;      
