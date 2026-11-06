@@ -13,7 +13,7 @@ const productController: T = {};
 
 /**SPA */
 
-memberController.getProducts = async (req: Request, res: Response) => {
+productController.getProducts = async (req: Request, res: Response) => {
     try {
         console.log("getProducts");
         const {page, limit, order, productColloction, search} = req.query;
