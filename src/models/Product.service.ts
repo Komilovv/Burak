@@ -37,7 +37,7 @@ class ProductService {
 
         const result = await this.productModel
             .aggregate([
-                {$match: match},
+                {$match: match}, // pipline lar orqali complex query creation
                 {$sort: sort},
                 {$skip: (inquiry.page * 1 - 1) * inquiry.limit},
                 {$limit: inquiry.limit * 1}, // 1 ga ko'paytirishdan nima ma'no?
@@ -55,7 +55,7 @@ class ProductService {
               .findOne({_id: productId, productStatus: ProductStatus.PROCESS})
               .exec();
 
-            if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND)
+            if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
             if (memberId) {
                 // check existance
                 const input: ViewInput = {
@@ -65,16 +65,17 @@ class ProductService {
                 }
                 const existView = await this.viewService.checkViewExistance(input);
                 // insert view 
-                console.log("exist:", !! existView)
-                if(!existView) console.log("Planning to insert new view");
-                await this.viewService.insertMemberView(input);
-                
+                console.log("exist:", !! existView);
+                if(!existView) {
+                    console.log("Planning to insert new view");
+                    await this.viewService.insertMemberView(input);
                 // increase counts
                 result = await this.productModel.findByIdAndUpdate(
                     productId,
                     {$inc: { productView: +1 }},
                     {new: true}
                 ).exec()
+                }
             }
 
             return result;

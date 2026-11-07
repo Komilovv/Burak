@@ -16,14 +16,14 @@ const productController: T = {};
 productController.getProducts = async (req: Request, res: Response) => {
     try {
         console.log("getProducts");
-        const {page, limit, order, productColloction, search} = req.query;
+        const {page, limit, order, productCollection, search} = req.query; // destraction
         const inquiry: ProductInquiry = {
             page: Number(page),
             limit: Number(limit),
             order: String(order),
         };
 
-        if (productColloction) inquiry.productCollection = productColloction as ProductCollection;
+        if (productCollection) inquiry.productCollection = productCollection as ProductCollection;
         if (search) inquiry.search = String(search);
 
         const result = await productService.getProducts(inquiry);
@@ -39,7 +39,7 @@ productController.getProducts = async (req: Request, res: Response) => {
 
 productController.getProduct = async (req: ExtendedRequest, res: Response) => {
     try {
-        console.log("getProduct");
+        console.log("getProduct"); // debugging
         const { id } = req.params,
             memberId = req.member?._id ?? null,
             result = await productService.getProduct(memberId, id);
