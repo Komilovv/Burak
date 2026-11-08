@@ -18,7 +18,7 @@ class OrderService {
         this.memberService = new MemberService();
     }
 
-    public async creatOrder(member: Member, input: OrderItemInput[]):
+    public async createOrder(member: Member, input: OrderItemInput[]):
      Promise<Order> {
         const memberId = shapeIntoMongooseObjectId(member._id);
         const amount = input.reduce((accumulator: number, item: OrderItemInput) => {
@@ -62,7 +62,7 @@ class OrderService {
         inquiry: OrderInquiry
     ) : Promise<Order[]> {
         const memberId = shapeIntoMongooseObjectId(member._id);
-        const matches = {memberid: memberId, orderStatus: inquiry.orderStatus};
+        const matches = {memberId: memberId, orderStatus: inquiry.orderStatus};
 
         const result = await this.orderModel
             .aggregate([
@@ -89,7 +89,7 @@ class OrderService {
             ])
             .exec();
         if(!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
-
+        console.log(result);
         return result;
     }
 
