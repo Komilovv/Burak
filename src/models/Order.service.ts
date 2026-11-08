@@ -67,7 +67,7 @@ class OrderService {
         const result = await this.orderModel
             .aggregate([
                 {$match: matches},
-                {$sort: {updateAt: -1}},
+                {$sort: {updatedAt: -1}},
                 {$skip: (inquiry.page -1) * inquiry.limit},
                 {$limit: inquiry.limit},
                 {
@@ -100,9 +100,9 @@ class OrderService {
 
         const result = await this.orderModel
             .findOneAndUpdate(
-                {memberId: memberId, _id: orderId},
-                {orderStatus: orderStatus},
-                {new: true}
+                {memberId: memberId, _id: orderId}, // filter
+                {orderStatus: orderStatus}, // update
+                {new: true} // new one is returned
             ).exec();
         
         if(!result) throw new Errors(HttpCode.NOT_MODIFIED, Message.UPDATE_FAILED);
